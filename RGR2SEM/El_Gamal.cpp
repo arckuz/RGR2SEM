@@ -72,3 +72,4 @@ void El_Gamal() {
     encryption(p, g, Y, message, encoded_message);
     decryption(p, x, encoded_message);
 }
+//υσι
