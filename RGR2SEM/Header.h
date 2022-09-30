@@ -20,3 +20,8 @@ int vzaim_prost(int p);
 void encryption(int p, int g, int Y, string message, vector<pair<int, int>>& encoded_message);
 void decryption(int p, int x, vector<pair<int, int>> encoded_message);
 void El_Gamal();
+
+
+string encode(string str0, int key);
+string decode(string str0, int key);
+void skital();

@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="El_Gamal.cpp" />
     <ClCompile Include="RGR2SEM.cpp" />
+    <ClCompile Include="Skital.cpp" />
     <ClCompile Include="Vijiner.cpp" />
   </ItemGroup>
   <ItemGroup>
