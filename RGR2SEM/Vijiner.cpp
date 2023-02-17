@@ -20,7 +20,7 @@ void letter_decryption(int i, int& cnt, int n, string str1, string& str2, string
     str2 += alphabet[(x - y + n) % n];
 }
 void vij() {
-    string alf1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", alf2 = "abcdefghijklmnopqrstuvwxyz", str = "hello WORLD", key1 = "KeY", key2 = "", str1 = "", str2 = "";
+    string alf1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", alf2 = "abcdefghijklmnopqrstuvwxyz", str = "lol", key1 = "hellsdf", key2 = "", str1 = "", str2 = "";
     vector<char> alphabet1;
     vector<char> alphabet2;
     for (auto i : key1) {

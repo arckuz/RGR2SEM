@@ -1,9 +1,31 @@
 #include "Header.h"
-string encode(string str0, int key) {
+void skital_encode() {
+    string str0;
+    int inp_key;
+    ifstream in;
+
+    cout << endl;
+    in.open("message.txt");
+    if (in.is_open())
+    {
+        getline(in, str0);
+    }
+    else {
+        cout << "File not found";
+    }
+    in.close();
+
+    cout << "Your message: ";
+    cout << str0 << endl;
+    cout << "Input key: ";
+    cin >> inp_key;
+
+
+
     vector <vector <char>> vec;
     string str = str0, str1;
 
-    int n = key;
+    int n = inp_key;
 
     vec.resize(n);
 
@@ -36,21 +58,44 @@ string encode(string str0, int key) {
 
     for (auto x : vec) {
         for (auto y : x) {
-            cout << y;
         }
-        cout << endl;
     }
 
-    cout << endl;
-
-    return str1;
+   // cout << endl;
+    ofstream out{ "encoded_message.txt" };
+    out << str1;
+    out.close();
+    cout << "Encoded message: " << str1;
 }
 
-string decode(string str0, int key) {
+void skital_decode() {
+
+    string str0;
+    ifstream in;   
+    cout << endl;
+    in.open("encoded_message.txt");
+    if (in.is_open())
+    {
+        getline(in, str0);
+    }
+    else {
+        cout << "File not found";
+    }
+    in.close();
+
+    int inp_key;
+
+    cout << "Your message: ";
+    cout << str0 << endl;
+    cout << "Input key: ";
+    cin >> inp_key;
+
+
+
     vector <vector <char>> vec;
     string str = str0, str1;
 
-    int n = key;
+    size_t n = inp_key;
 
     vec.resize(n);
 
@@ -78,18 +123,15 @@ string decode(string str0, int key) {
 
     for (auto x : vec) {
         for (auto y : x) {
-            cout << y;
+            //cout << y;
         }
-        cout << endl;
+        //cout << endl;
     }
 
-    cout << endl;
-
-    return str1;
-}
-void skital() {
-    string str, encoded_str, decoded_str;
-    str = "NASTUPAITE pojalysta, dorogie koi dryzia", encoded_str = encode(str, 3), decoded_str = decode(encoded_str, 3);
-    cout << encoded_str << endl;
-    cout << decoded_str;
+   // cout << endl;
+    
+    cout <<"Decoded message: " << str1;
+    ofstream out{ "decoded_message.txt" };
+    out << str1;
+    out.close();
 }

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string.h>
 #include <random>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -22,6 +24,5 @@ void decryption(int p, int x, vector<pair<int, int>> encoded_message);
 void El_Gamal();
 
 
-string encode(string str0, int key);
-string decode(string str0, int key);
-void skital();
+void skital_encode();
+void skital_decode();
