@@ -54,21 +54,22 @@ void encryption(int p, int g, int Y, string message, vector<pair<int, int>>& enc
     }
     cout << endl;
 }
-void decryption(int p, int x, vector<pair<int, int>> encoded_message) {
+void decryption(int p, int x, vector<pair<int, int>> encoded_message, string& decoded_message) {
     for (auto i : encoded_message) {
         int A = i.first;
         int B = i.second;
         int M1 = step_with_numb(A, p - 1 - x, B, p);
-        cout << char(M1);
+        decoded_message+=char(M1);
     }
+    cout << decoded_message;
 }
 void El_Gamal() {
     int p = 3571, g = 1785, x = 698, Y;
-    string message = "Secret message", decoded_message;
+    string message = "Secret message", decoded_message="";
     vector<pair<int, int>> encoded_message;
 
     Y = step(g, x, p); //открытый ключ
 
     encryption(p, g, Y, message, encoded_message);
-    decryption(p, x, encoded_message);
+    decryption(p, x, encoded_message, decoded_message);
 }
