@@ -19,12 +19,35 @@ void letter_decryption(int i, int& cnt, int n, string str1, string& str2, string
     auto y = findd(key[(i - cnt) % key.length()], alphabet);
     str2 += alphabet[(x - y + n) % n];
 }
-void vij_enc(string message, string key) {
-    string alf1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", alf2 = "abcdefghijklmnopqrstuvwxyz", key1 = "", key2 = "", enc_message= "";
-    key1 = key;
 
+void vij_enc(string message) {
+    string key;
+    string alf1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", alf2 = "abcdefghijklmnopqrstuvwxyz", key1 = "", key2 = "", enc_message = "";
     vector<char> alphabet1;
     vector<char> alphabet2;
+
+    for (auto i : alf1) {
+        alphabet1.push_back(i);
+    }
+    for (auto i : alf2) {
+        alphabet2.push_back(i);
+    }
+    size_t N = alphabet1.size(), n = alphabet2.size();
+
+    bool flag = true;
+
+    while (flag) {
+        cout << "Введите ключ: ";
+        getline(cin, key);
+        for (auto i : key) {
+            flag = false;
+            if (findd(i, alphabet1) < 0 && findd(i, alphabet2) < 0) {
+                flag = true;
+                cout << "Введенный ключ не подходит под условие!\n";
+                break;
+            }
+        }
+    };
     for (auto i : key1) {
         if (int(i) >= 65 && int(i) <= 106) {
             key2 += char(int(i) + 32);
@@ -33,13 +56,6 @@ void vij_enc(string message, string key) {
             key2 += char(int(i) - 32);
         }
     }
-    for (auto i : alf1) {
-        alphabet1.push_back(i);
-    }
-    for (auto i : alf2) {
-        alphabet2.push_back(i);
-    }
-    size_t N = alphabet1.size(), n = alphabet2.size();
 
 
     for (int i = 0, cnt = 0; i < message.length(); i++) {
@@ -68,28 +84,40 @@ void vij_enc(string message, string key) {
     ofstream out{ "encoded_message.txt" };
     out << enc_message;
     out.close();
-    cout << "Encoded message: " << enc_message;
+    cout << "Зашифрованное сообщение: " << enc_message << endl;
 
 }
-void vij_dec(string key) {
-    string message;
-    ifstream in;
-    cout << endl;
-    in.open("encoded_message.txt");
-    if (in.is_open())
-    {
-        getline(in, message);
-    }
-    else {
-        cout << "File not found";
-    }
-    in.close();
-
+void vij_dec(string message) {
+    string key;
     string alf1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", alf2 = "abcdefghijklmnopqrstuvwxyz", key1 = "", key2 = "", dec_message = "";
-    key1 = key;
-
     vector<char> alphabet1;
     vector<char> alphabet2;
+
+    for (auto i : alf1) {
+        alphabet1.push_back(i);
+    }
+    for (auto i : alf2) {
+        alphabet2.push_back(i);
+    }
+    int N = alphabet1.size(), n = alphabet2.size();
+
+    bool flag = true;
+
+    while (flag) {
+        cout << "Введите ключ: ";
+        getline(cin, key);
+        for (auto i : key) {
+            flag = false;
+            if (findd(i, alphabet1) < 0 && findd(i, alphabet2) < 0) {
+                flag = true;
+                cout << "Введенный ключ не подходит под условие!\n";
+                break;
+            }
+        }
+    }
+
+    key1 = key;
+
     for (auto i : key1) {
         if (int(i) >= 65 && int(i) <= 106) {
             key2 += char(int(i) + 32);
@@ -98,13 +126,6 @@ void vij_dec(string key) {
             key2 += char(int(i) - 32);
         }
     }
-    for (auto i : alf1) {
-        alphabet1.push_back(i);
-    }
-    for (auto i : alf2) {
-        alphabet2.push_back(i);
-    }
-    int N = alphabet1.size(), n = alphabet2.size();
     for (int i = 0, cnt = 0; i < message.length(); i++) {
         if (findd(message[i], alphabet1) >= 0) {
             if (findd(key1[(i - cnt) % key1.length()], alphabet1)) {
@@ -128,5 +149,8 @@ void vij_dec(string key) {
         }
     }
 
-    cout << "Decoded message: " << dec_message;
+    cout << "Расшифрованное сообщение: " << dec_message;
+    ofstream out{ "output.txt" };
+    out << dec_message;
+    out.close();
 }

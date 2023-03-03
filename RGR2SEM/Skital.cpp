@@ -1,12 +1,20 @@
 #include "Header.h"
 void skital_encode(string message) {
     int inp_key;
-
-    cout << "Your message: ";
+    string key;
+    cout << "Ваше сообщение: ";
     cout << message << endl;
-    cout << "Input key: ";
-    cin >> inp_key;
-
+    while (true) {
+        cout << "Введите ключ: ";
+        getline(cin, key);
+        if (is_it_number(key) && stoi(key)>0) {
+            break;
+        }
+        else {
+            cout << "Введенное знаечение не подходит под условие";
+        }
+    }
+    inp_key = stoi(key);
 
 
     vector <vector <char>> vec;
@@ -51,18 +59,24 @@ void skital_encode(string message) {
     ofstream out{ "encoded_message.txt" };
     out << enc_message;
     out.close();
-    cout << "Encoded message: " << enc_message;
+    cout << "Зашифрованное сообщение: " << enc_message << endl;
 }
 
 void skital_decode(string message) {
 
-
+    string key;
     int inp_key;
-
-    cout << "Your message: ";
-    cout << message << endl;
-    cout << "Input key: ";
-    cin >> inp_key;
+    while (true) {
+        cout << "Введите ключ: ";
+        getline(cin, key);
+        if (is_it_number(key) && stoi(key) > 0) {
+            break;
+        }
+        else {
+            cout << "Введенное знаечение не подходит под условие";
+        }
+    }
+    inp_key = stoi(key);
 
 
 
@@ -97,15 +111,12 @@ void skital_decode(string message) {
 
     for (auto x : vec) {
         for (auto y : x) {
-            //cout << y;
         }
-        //cout << endl;
     }
 
-   // cout << endl;
     
     cout <<"Decoded message: " << dec_message;
-    ofstream out{ "decoded_message.txt" };
+    ofstream out{ "output.txt" };
     out << dec_message;
     out.close();
 }
