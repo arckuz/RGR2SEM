@@ -14,7 +14,6 @@ void letter_encryption(int i, int& cnt, int n, string str, string& str1, string 
 void letter_decryption(int i, int& cnt, int n, string str1, string& str2, string key, vector<char> alphabet);
 void vij_enc(string message, string key);
 void vij_dec(string key);
-void vij();
 
 
 int step(int a, int x, int p);
@@ -26,5 +25,5 @@ void decryption(int p, int x, vector<pair<int, int>> encoded_message, string& de
 void El_Gamal();
 
 
-void skital_encode();
-void skital_decode();
+void skital_encode(string message);
+void skital_decode(string message);

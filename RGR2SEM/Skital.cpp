@@ -1,36 +1,23 @@
 #include "Header.h"
-void skital_encode() {
-    string str0;
+void skital_encode(string message) {
     int inp_key;
-    ifstream in;
-
-    cout << endl;
-    in.open("message.txt");
-    if (in.is_open())
-    {
-        getline(in, str0);
-    }
-    else {
-        cout << "File not found";
-    }
-    in.close();
 
     cout << "Your message: ";
-    cout << str0 << endl;
+    cout << message << endl;
     cout << "Input key: ";
     cin >> inp_key;
 
 
 
     vector <vector <char>> vec;
-    string str = str0, str1;
+    string enc_message;
 
     int n = inp_key;
 
     vec.resize(n);
 
-    int letters_in_a_row = str.length() / n;
-    if (str.length() % n != 0) letters_in_a_row++;
+    int letters_in_a_row = message.length() / n;
+    if (message.length() % n != 0) letters_in_a_row++;
 
     for (int i = 0; i < n; i++) {
         vec[i].resize(letters_in_a_row);
@@ -39,8 +26,8 @@ void skital_encode() {
     int k = 0;
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec[i].size(); j++) {
-            if (k < str.length()) {
-                vec[i][j] = str[k];
+            if (k < message.length()) {
+                vec[i][j] = message[k];
             }
             else vec[i][j] = ' ';
             k++;
@@ -50,7 +37,7 @@ void skital_encode() {
     k = 0;
     for (int i = 0; i < letters_in_a_row; i++) {
         while (k != n) {
-            str1 += vec[k][i];
+            enc_message += vec[k][i];
             k++;
         }
         k = 0;
@@ -61,45 +48,32 @@ void skital_encode() {
         }
     }
 
-   // cout << endl;
     ofstream out{ "encoded_message.txt" };
-    out << str1;
+    out << enc_message;
     out.close();
-    cout << "Encoded message: " << str1;
+    cout << "Encoded message: " << enc_message;
 }
 
-void skital_decode() {
+void skital_decode(string message) {
 
-    string str0;
-    ifstream in;   
-    cout << endl;
-    in.open("encoded_message.txt");
-    if (in.is_open())
-    {
-        getline(in, str0);
-    }
-    else {
-        cout << "File not found";
-    }
-    in.close();
 
     int inp_key;
 
     cout << "Your message: ";
-    cout << str0 << endl;
+    cout << message << endl;
     cout << "Input key: ";
     cin >> inp_key;
 
 
 
     vector <vector <char>> vec;
-    string str = str0, str1;
+    string dec_message;
 
     size_t n = inp_key;
 
     vec.resize(n);
 
-    int letters_in_a_row = str.length() / n;
+    int letters_in_a_row = message.length() / n;
 
     for (int i = 0; i < n; i++) {
         vec[i].resize(letters_in_a_row);
@@ -108,7 +82,7 @@ void skital_decode() {
     int k = 0, k0 = 0;
     for (int i = 0; i < letters_in_a_row; i++) {
         while (k != n) {
-            vec[k][i] = str[k0];
+            vec[k][i] = message[k0];
             k++;
             k0++;
         }
@@ -117,7 +91,7 @@ void skital_decode() {
 
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < letters_in_a_row; j++) {
-            str1 += vec[i][j];
+            dec_message += vec[i][j];
         }
     }
 
@@ -130,8 +104,8 @@ void skital_decode() {
 
    // cout << endl;
     
-    cout <<"Decoded message: " << str1;
+    cout <<"Decoded message: " << dec_message;
     ofstream out{ "decoded_message.txt" };
-    out << str1;
+    out << dec_message;
     out.close();
 }

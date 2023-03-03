@@ -4,9 +4,23 @@
 
 int main()
 {
-	string str = "secretmessage", key = "hello";
+	El_Gamal();
 
-	vij();
+
+/*	string message = "secret message", key = "ooo";
+	ifstream input_file;
+
+	input_file.open("encoded_message.txt");
+	if (input_file.is_open())
+	{
+		getline(input_file, message);
+	}
+	else {
+		cout << "File not found";
+	}
+	input_file.close();
+
+	*/
 
 	//string message;
 	//cout << "enter your message: ";
@@ -14,8 +28,5 @@ int main()
 	//ofstream out{ "message.txt" };
 	//out << message;
 	//out.close();
-	////string str = "nastupaite pojalysta, dorogie moi dryzia";
-	//skital_encode();
-	//skital_decode();
 }
 

@@ -43,13 +43,16 @@ int vzaim_prost(int p) {
         }
     }
 }
+
+
+
 void encryption(int p, int g, int Y, string message, vector<pair<int, int>>& encoded_message) {
     for (auto i : message) {
         int M = int(i);
         int k = vzaim_prost(p);//случайное взаимно простое
         int A = step(g, k, p);
         int B = step_with_numb(Y, k, M, p);
-        cout << A << " " << B << " ";
+        cout << A << " " << B << "|";
         encoded_message.push_back(make_pair(A, B));
     }
     cout << endl;
