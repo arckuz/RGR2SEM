@@ -16,7 +16,6 @@ void letter_decryption(int i, int& cnt, int n, string str1, string& str2, string
 void vij_enc(string message);
 void vij_dec(string message);
 
-bool is_it_number(string numb);
 int step(int a, int x, int p);
 int step_with_numb(int Y, int k, int M, int p);
 int nod(int a, int b);

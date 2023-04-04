@@ -2,16 +2,22 @@
 void skital_encode(string message) {
     int inp_key;
     string key;
-    cout << "Ваше сообщение: ";
-    cout << message << endl;
     while (true) {
-        cout << "Введите ключ: ";
+        cout << "Введите цифровой ключ: ";
         getline(cin, key);
-        if (is_it_number(key) && stoi(key)>0) {
-            break;
+        try {
+            stoi(key);
         }
-        else {
-            cout << "Введенное знаечение не подходит под условие";
+        catch (const std::out_of_range& e) {
+            cout << "Введенное число не входит в диапазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "Введенное значение содержит не подходящие символы!" << endl;
+            continue;
+        }
+        if (stoi(key) > 0) {
+            break;
         }
     }
     inp_key = stoi(key);
@@ -51,11 +57,6 @@ void skital_encode(string message) {
         k = 0;
     }
 
-    for (auto x : vec) {
-        for (auto y : x) {
-        }
-    }
-
     ofstream out{ "encoded_message.txt" };
     out << enc_message;
     out.close();
@@ -69,16 +70,22 @@ void skital_decode(string message) {
     while (true) {
         cout << "Введите ключ: ";
         getline(cin, key);
-        if (is_it_number(key) && stoi(key) > 0) {
-            break;
+        try {
+            stoi(key);
         }
-        else {
-            cout << "Введенное знаечение не подходит под условие";
+        catch(const std::out_of_range& e) {
+            cout << "Введенное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "Введенное значение содержит не подходящие символы!" << endl;
+            continue;
+        }
+        if (stoi(key) > 0) {
+            break;
         }
     }
     inp_key = stoi(key);
-
-
 
     vector <vector <char>> vec;
     string dec_message;
@@ -108,13 +115,7 @@ void skital_decode(string message) {
             dec_message += vec[i][j];
         }
     }
-
-    for (auto x : vec) {
-        for (auto y : x) {
-        }
-    }
-
-    
+ 
     cout <<"Decoded message: " << dec_message;
     ofstream out{ "output.txt" };
     out << dec_message;

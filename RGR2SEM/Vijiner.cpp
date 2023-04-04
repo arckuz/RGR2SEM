@@ -48,6 +48,8 @@ void vij_enc(string message) {
             }
         }
     };
+    key1 = key;
+
     for (auto i : key1) {
         if (int(i) >= 65 && int(i) <= 106) {
             key2 += char(int(i) + 32);

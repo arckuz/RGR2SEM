@@ -82,10 +82,10 @@ void menu(const string& password) {
 
 	cout << endl;
 	cout << "Выберите шифр: " << endl;
-	cout << "Нажмите <1> если выбрали  Эль Гамаля " << endl;
-	cout << "Нажмите <2> если выбрали  Вижинер" << endl;
-	cout << "Нажмите <3> если выбрали  Скитал " << endl;
-	cout << "Нажмите <10> если выбрали  выход " << endl;
+	cout << "Нажмите <1> если выбрали шифр Эль Гамаля " << endl;
+	cout << "Нажмите <2> если выбрали шифр Вижинера" << endl;
+	cout << "Нажмите <3> если выбрали шифр Скитала" << endl;
+	cout << "Нажмите <10> если выбрали выход " << endl;
 
 	cin >> vibor;
 	if (vibor == "1" || vibor == "2" || vibor == "3" || vibor == "10") {
@@ -191,7 +191,7 @@ void menu(const string& password) {
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	string s, password = "1111";
+	string s, password = "123123";
 
 	cout << "Пароль: ";
 
@@ -210,11 +210,7 @@ int main()
 
 	system("pause");
 
-	/*string message = "secret message";
-	el_gamal_enc(message);
-	ifstream enc_m("encoded_message.txt");
-	getline(enc_m, message);
-	el_gamal_dec(message);
-	system("notepad output.txt ");*/
+
+
 }
 

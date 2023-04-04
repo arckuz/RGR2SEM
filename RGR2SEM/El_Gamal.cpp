@@ -1,13 +1,5 @@
 #include "Header.h"
 
-bool is_it_number(string numb) {
-    for (auto i : numb) {
-        if ((i < '0') || (i > '9')) {
-            return false;
-        }
-    }
-    return true;
-}
 bool check_vzaim_prost(int p, int g) {
     if (nod(p, g) == 1) {
         return true;
@@ -34,7 +26,6 @@ int nod(int a, int b) {
 }
 int step(int a, int x, int p) {
     int y;
-    //cin >> a >> x >> p;
     y = x % (p - 1);
     int t, t0;
     t = 0;
@@ -43,7 +34,6 @@ int step(int a, int x, int p) {
         t = a % p;
         a = t * t0;
     }
-    //cout << t << endl;
     return t;
 }
 int step_with_numb(int Y, int k, int M, int p) {
@@ -104,7 +94,18 @@ void el_gamal_enc(string message) {
     while (true) {
         cout << "¬ведите простое число p => 1000: ";
         getline(cin, p);
-        if (is_it_number(p) && chec_pros(stoi(p)) && stoi(p) >=1000) {
+        try {
+            stoi(p);
+        }
+        catch (const std::out_of_range& e) {
+            cout << "¬веденное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "¬веденное значение содержит не подход€щие символы!" << endl;
+            continue;
+        }
+        if (chec_pros(stoi(p)) && stoi(p) >=1000) {
             break;
         }
         else {
@@ -114,7 +115,18 @@ void el_gamal_enc(string message) {
     while (true) {
         cout << "¬ведите число 0 < g < p, взаимно простое с p: ";
         getline(cin, g);
-        if (is_it_number(g) && check_vzaim_prost(stoi(p), stoi(g)) && stoi(g) > 0 && stoi(g) < stoi(p)) {
+        try {
+            stoi(g);
+        }
+        catch (const std::out_of_range& e) {
+            cout << "¬веденное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "¬веденное значение содержит не подход€щие символы!" << endl;
+            continue;
+        }
+        if (check_vzaim_prost(stoi(p), stoi(g)) && stoi(g) > 0 && stoi(g) < stoi(p)) {
             break;
         }
         else {
@@ -124,7 +136,18 @@ void el_gamal_enc(string message) {
     while (true) {
         cout << "¬ведите число 2 < X < p - 1: ";
         getline(cin, x);
-        if (is_it_number(x) && stoi(x) > 2 && stoi(x) < (stoi(p) - 1)) {
+        try {
+            stoi(x);
+        }
+        catch (const std::out_of_range& e) {
+            cout << "¬веденное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "¬веденное значение содержит не подход€щие символы!" << endl;
+            continue;
+        }
+        if (stoi(x) > 2 && stoi(x) < (stoi(p) - 1)) {
             break;
         }
         else {
@@ -148,7 +171,18 @@ void el_gamal_dec(string message) {
     while (true) {
         cout << "¬ведите число p: ";
         getline(cin, p);
-        if (is_it_number(p) && stoi(p) > 0) {
+        try {
+            stoi(p);
+        }
+        catch (const std::out_of_range& e) {
+            cout << "¬веденное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "¬веденное значение содержит не подход€щие символы!" << endl;
+            continue;
+        }
+        if (stoi(p) > 0) {
             break;
         }
         else cout << "¬веденное значение не подходит под ксловие";
@@ -156,7 +190,18 @@ void el_gamal_dec(string message) {
     while (true) {
         cout << "¬ведите число g: ";
         getline(cin, g);
-        if (is_it_number(g) && stoi(g) > 0) {
+        try {
+            stoi(g);
+        }
+        catch (const std::out_of_range& e) {
+            cout << "¬веденное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "¬веденное значение содержит не подход€щие символы!" << endl;
+            continue;
+        }
+        if (stoi(g) > 0) {
             break;
         }
         else cout << "¬веденное значение не подходит под ксловие";
@@ -164,7 +209,18 @@ void el_gamal_dec(string message) {
     while (true) {
         cout << "¬ведите число x: ";
         getline(cin, x);
-        if (is_it_number(x) && stoi(x) > 0) {
+        try {
+            stoi(x);
+        }
+        catch (const std::out_of_range& e) {
+            cout << "¬веденное число не входит в диопазон значений типа int!" << endl;
+            continue;
+        }
+        catch (const std::invalid_argument& e) {
+            cout << "¬веденное значение содержит не подход€щие символы!" << endl;
+            continue;
+        }
+        if (stoi(x) > 0) {
             break;
         }
         else cout << "¬веденное значение не подходит под ксловие";
